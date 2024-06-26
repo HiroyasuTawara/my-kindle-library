@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th>KindkeforPC</th>
+    <th>ブラウザ</th>
+    <th>ASIN</th>
+    <th>タイトル</th>
+    <th>著者</th>
+    <th>レーベル</th>
+    <th>出版社</th>
+    <th>出版日</th>
+    <th>購入日</th>
+    <th>取得元</th>
+  </tr>
+  <% @metadatas.each do |m| %>
+    <tr>
+      <td><a href =<%= m[:desktop_url] %>>link</a></td>
+      <td><%= link_to "link", m[:web_url] %></td>
+      <td><%= m[:asin] %></td>
+      <td><%= m[:title] %></td>
+      <td><%= m[:author] %></td>
+      <td><%= m[:label] %></td>
+      <td><%= m[:publisher] %></td>
+      <td><%= m[:publication_date] %></td>
+      <td><%= m[:purchase_date] %></td>
+      <td><%= m[:origin] %></td>
+    </tr>
+  <% end %>
+</table>

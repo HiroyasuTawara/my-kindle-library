@@ -1,2 +1,5 @@
-metadata_xml_path: "{ENV['USERPROFILE']}/AppData/Local/Amazon/Kindle/Cache/KindleSyncMetadataCache.xml" 
-# OSがWindowsで、デフォルトのパスにKindle_for_PCをインストールしている場合
+metadata_xml_path: "C:/Users/[ユーザー名]/AppData/Local/Amazon/Kindle/Cache/KindleSyncMetadataCache.xml"
+# OSがWindowsで、インストーラーのデフォルトのパスにKindle_for_PCをインストールしている場合
+
+metadata_xml_path: "/Users/[ユーザー名]/Library/Containers/com.amazon.Kindle/Data/Library/Application Support/Kindle/Cache/KindleSyncMetadataCache.xml"
+# OSがMacで、インストーラーのデフォルトのパスにKindle_for_PCをインストールしている場合

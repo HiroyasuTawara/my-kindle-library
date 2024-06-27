@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+table, th, td {
+  border: 1px solid #333;
+  white-space: nowrap;
+}
+
+th, td {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -24,3 +24,7 @@ th, td {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.sort-direction {
+  text-decoration: none;
+}

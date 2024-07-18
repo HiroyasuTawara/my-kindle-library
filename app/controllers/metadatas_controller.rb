@@ -2,7 +2,7 @@ class MetadatasController < ApplicationController
   def index
     @metadatas = Metadata.parse_xml
 
-    @metadatas.sort!{|m1, m2| sort_logic(params[:sort_order], m1[params[:sort_column].to_sym], m2[params[:sort_column].to_sym])}
+    @metadatas.sort!{|m1, m2| sort_logic(params[:sort_order], m1[params[:sort_column]&.to_sym], m2[params[:sort_column]&.to_sym])}
   end
   
   private

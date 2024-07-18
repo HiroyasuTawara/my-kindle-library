@@ -7,8 +7,14 @@
     <th>著者</th>
     <th>レーベル</th>
     <th>出版社</th>
-    <th><%= link_to "出版日", metadatas_path(sort_column: :publication_date, sort_order: :desc) %></th>
-    <th>購入日</th>
+    <th>出版日
+      <%= link_to "▲", metadatas_path(sort_column: :publication_date, sort_order: :asc), class: "sort-direction" %>
+      <%= link_to "▼", metadatas_path(sort_column: :publication_date, sort_order: :desc), class: "sort-direction" %>
+    </th>
+    <th>購入日
+      <%= link_to "▲", metadatas_path(sort_column: :purchase_date, sort_order: :asc), class: "sort-direction" %>
+      <%= link_to "▼", metadatas_path(sort_column: :purchase_date, sort_order: :desc), class: "sort-direction" %>
+    </th>
     <th>取得元</th>
   </tr>
   <% @metadatas.each do |m| %>

@@ -1,10 +1,20 @@
+<javascript> 
+</javascript>
+
+<div popover id="modal-author-filter">
+  <select name="example">
+    <%- @authors.each do |author| %>
+      <option value=<%=author%>><%=link_to author, metadatas_path(author_filter: author) %></option>
+    <%- end %>
+  </select>
+</div>
 <table>
   <tr>
     <th>forPC</th>
     <th>ブラウザ</th>
     <th>ASIN</th>
     <th>タイトル</th>
-    <th>著者</th>
+    <th>著者 <button popovertarget="modal-author-filter">↓</button></th>
     <th>レーベル</th>
     <th>出版社</th>
     <th>出版日

@@ -3,8 +3,8 @@ class MetadatasController < ApplicationController
     @metadatas = Metadata.parse_xml
 
     @authors = @metadatas.map{|hash| hash[:author]}.uniq
-    if params[:authors_filter].present?
-      @metadatas.filter!{|metadata| metadata[:author] == params[:authors_filter]}
+    if params[:filter_type].present?
+      @metadatas.filter!{|metadata| metadata[params[:filter_type].to_sym] == params[:filter_val]}
     end
     @metadatas.sort!{|m1, m2| sort_logic(params[:sort_order], m1[params[:sort_column]&.to_sym], m2[params[:sort_column]&.to_sym])}
   end

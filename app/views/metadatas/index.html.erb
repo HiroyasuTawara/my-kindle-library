@@ -1,10 +1,17 @@
+<div popover id="modal-author-filter">
+  <select name="example" class="filter" data-type="author">
+    <%- @authors.each do |author| %>
+      <option value=<%=URI.encode_www_form_component(author)%>><%= author %></option>
+    <%- end %>
+  </select>
+</div>
 <table>
   <tr>
     <th>forPC</th>
     <th>ブラウザ</th>
     <th>ASIN</th>
     <th>タイトル</th>
-    <th>著者</th>
+    <th>著者 <button popovertarget="modal-author-filter">↓</button></th>
     <th>レーベル</th>
     <th>出版社</th>
     <th>出版日
@@ -32,3 +39,13 @@
     </tr>
   <% end %>
 </table>
+
+<script>
+  document.querySelector('select.filter').addEventListener("change",function(e) {
+    const filter_type = e.target.getAttribute("data-type");
+    const filter_val = e.target.value;
+    location.href = `<%= metadatas_path %>?filter_type=${filter_type}&filter_val=${filter_val}`;
+    console.log(filter_val);
+    console.log(e.target.value);
+  })
+</script>

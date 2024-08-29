@@ -1,51 +1,43 @@
-<div popover id="modal-author-filter">
-  <select name="example" class="filter" data-type="author">
-    <%- @authors.each do |author| %>
-      <option value=<%=URI.encode_www_form_component(author)%>><%= author %></option>
-    <%- end %>
-  </select>
-</div>
-<table>
-  <tr>
-    <th>forPC</th>
-    <th>ブラウザ</th>
-    <th>ASIN</th>
-    <th>タイトル</th>
-    <th>著者 <button popovertarget="modal-author-filter">↓</button></th>
-    <th>レーベル</th>
-    <th>出版社</th>
-    <th>出版日
-      <%= link_to "▲", metadatas_path(sort_column: :publication_date, sort_order: :asc), class: "sort-direction" %>
-      <%= link_to "▼", metadatas_path(sort_column: :publication_date, sort_order: :desc), class: "sort-direction" %>
-    </th>
-    <th>購入日
-      <%= link_to "▲", metadatas_path(sort_column: :purchase_date, sort_order: :asc), class: "sort-direction" %>
-      <%= link_to "▼", metadatas_path(sort_column: :purchase_date, sort_order: :desc), class: "sort-direction" %>
-    </th>
-    <th>取得元</th>
-  </tr>
-  <% @metadatas.each do |m| %>
+<div data-controller="hello">
+  <div popover id="modal-author-filter">
+    <select data-action="change->hello#filter" data-hello-target="authorFilter" name="example" class="filter" data-type="author">
+      <%- @authors.each do |author| %>
+        <option value=<%=URI.encode_www_form_component(author)%>><%= author %></option>
+      <%- end %>
+    </select>
+  </div>
+  <table>
     <tr>
-      <td><a href =<%= m[:desktop_url] %>>link</a></td>
-      <td><%= link_to "link", m[:web_url] %></td>
-      <td><%= m[:asin] %></td>
-      <td><%= m[:title] %></td>
-      <td><%= m[:author] %></td>
-      <td><%= m[:label] %></td>
-      <td><%= m[:publisher] %></td>
-      <td><%= m[:publication_date] %></td>
-      <td><%= m[:purchase_date] %></td>
-      <td><%= m[:origin] %></td>
+      <th>forPC</th>
+      <th>ブラウザ</th>
+      <th>ASIN</th>
+      <th>タイトル</th>
+      <th>著者 <button popovertarget="modal-author-filter">↓</button></th>
+      <th>レーベル</th>
+      <th>出版社</th>
+      <th>出版日
+        <%= link_to "▲", metadatas_path(sort_column: :publication_date, sort_order: :asc), class: "sort-direction" %>
+        <%= link_to "▼", metadatas_path(sort_column: :publication_date, sort_order: :desc), class: "sort-direction" %>
+      </th>
+      <th>購入日
+        <%= link_to "▲", metadatas_path(sort_column: :purchase_date, sort_order: :asc), class: "sort-direction" %>
+        <%= link_to "▼", metadatas_path(sort_column: :purchase_date, sort_order: :desc), class: "sort-direction" %>
+      </th>
+      <th>取得元</th>
     </tr>
-  <% end %>
-</table>
-
-<script>
-  document.querySelector('select.filter').addEventListener("change",function(e) {
-    const filter_type = e.target.getAttribute("data-type");
-    const filter_val = e.target.value;
-    location.href = `<%= metadatas_path %>?filter_type=${filter_type}&filter_val=${filter_val}`;
-    console.log(filter_val);
-    console.log(e.target.value);
-  })
-</script>
+    <% @metadatas.each do |m| %>
+      <tr>
+        <td><a href =<%= m[:desktop_url] %>>link</a></td>
+        <td><%= link_to "link", m[:web_url] %></td>
+        <td><%= m[:asin] %></td>
+        <td><%= m[:title] %></td>
+        <td><%= m[:author] %></td>
+        <td><%= m[:label] %></td>
+        <td><%= m[:publisher] %></td>
+        <td><%= m[:publication_date] %></td>
+        <td><%= m[:purchase_date] %></td>
+        <td><%= m[:origin] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

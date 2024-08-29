@@ -1,9 +1,11 @@
 <div popover id="modal-author-filter">
-  <select name="example" class="filter" data-type="author">
+  <select name="example" class="filter" data-type="author" multiple>
     <%- @authors.each do |author| %>
       <option value=<%=URI.encode_www_form_component(author)%>><%= author %></option>
     <%- end %>
   </select>
+
+  <button id="select-author-button">選択</button>
 </div>
 <table>
   <tr>
@@ -41,11 +43,14 @@
 </table>
 
 <script>
-  document.querySelector('select.filter').addEventListener("change",function(e) {
-    const filter_type = e.target.getAttribute("data-type");
-    const filter_val = e.target.value;
+  document.querySelector('button#select-author-button').addEventListener("click",function(e) {
+    const select_element = document.querySelector('select.filter');
+    const filter_type = select_element.getAttribute("data-type");
+    const filter_val = select_element.value;
+
+    console.log(decodeURIComponent(filter_val));
+    return;
+
     location.href = `<%= metadatas_path %>?filter_type=${filter_type}&filter_val=${filter_val}`;
-    console.log(filter_val);
-    console.log(e.target.value);
   })
 </script>
